@@ -1,37 +1,18 @@
 #! /home/peha/Desktop/tempProjects/01/venv/bin/python
-tile_size = int(input("Tile width: "))
-room_length = int(input("Room length: "))
-grout = input("Grout width: ")
+tile_size = int(input("Podaj szerokość płytki [mm]: "))
+room_length = int(input("Podaj szrokość pokoju [mm]: "))
+grout = f"  {input('Podaj szerokość fugi [mm]: ')}  "  # grout input with spaces
 
-# div_result = int(room_length) / int(tile_size)
-# sides_cuts = str((room_length % tile_size) / 2)
-# whole_tiles = str(tile_size).split() * int(div_result)
-# print(sides_cuts, whole_tiles, sides_cuts)
-# print('| ]', '[ ]'*int(div_result), '[ |')
-# print()
-# div_result = int(room_length) / int(tile_size)
-# sides_cuts = str((room_length % tile_size) / 2)
-# whole_tiles = str(tile_size).split() * int(room_length / tile_size)
-# horizontal = grout.join([sides_cuts, *whole_tiles, sides_cuts])
-# print(horizontal)
-
-# print('| ]', '[ ]'*int(div_result), '[ |')
-# print()
-
-section = 180
-length_to_divide: int = 2150
-interject: int = "  3  "
-
-cut_side = str((room_length % tile_size) / 2)
-tiles_ncut = int(room_length / tile_size)
+grout_sum = int(grout) * int(room_length / tile_size + 1)
+room_length = room_length - grout_sum  # new room length minus grouts sum
+two_cuts = str((room_length % tile_size) / 2)
+one_cut = str(room_length % tile_size)
 whole = str(tile_size).split() * int(room_length / tile_size)
-grout_sum = int(interject * (tiles_ncut + 1))
-print(f"Suma fug {len(grout_sum) * interject}")
-result = interject.join([cut_side, *whole, cut_side])
-print(result)
-# if (float(cut_side) > (float(tile_size) / 2)):
-#     print(f"Ilość płytek w rzędzie {whole +2}")
-# else:
-#     print(f"Ilość płytek w rzędzie {whole +1}")
+result_whole = grout.join([*whole, one_cut])
+result_centr = grout.join([two_cuts, *whole, two_cuts])
+print(f"\n-> Wycentrowany układ płytek. \nPotrzebnych {len(whole) + 1} całych płytek na 1 rząd.\n")
+print(result_centr)
 
-
+print('\n-------------------------------------')
+print(f'\n-> Rząd płytek z całą na początku.\nPotrzebnych {len(whole) + 1} całych płytek na 1 rząd.\n')
+print(result_whole)
