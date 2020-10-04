@@ -12,7 +12,6 @@ result_whole = grout.join([*whole, one_cut])
 result_centr = grout.join([two_cuts, *whole, two_cuts])
 print(f"\n-> Wycentrowany układ płytek. \nPotrzebnych {len(whole) + 1} całych płytek na 1 rząd.\n")
 print(result_centr)
-
 print('\n-------------------------------------')
 print(f'\n-> Rząd płytek z całą na początku.\nPotrzebnych {len(whole) + 1} całych płytek na 1 rząd.\n')
 print(result_whole)
